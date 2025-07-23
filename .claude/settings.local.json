@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:developer.devrev.ai)",
+      "WebFetch(domain:developer.devrev.ai)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(npm run test:*)",
+      "Bash(mv:*)",
+      "Bash(npm test)",
+      "Bash(npm run build:*)",
+      "Bash(node:*)",
+      "Bash(npm test:*)",
+      "Bash(start /B npm run test:server)",
+      "WebFetch(domain:devrev.ai)",
+      "Bash(npm run:*)",
+      "Bash(devrev:*)",
+      "Bash(npm install:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(find:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(tar:*)",
+      "Bash(ls:*)",
+      "Bash(rm:*)",
+      "Bash(chef-cli mcp initial-mapping:*)",
+      "Bash(git clone:*)",
+      "Bash(curl:*)",
+      "Bash(unzip:*)",
+      "Bash(./chef-cli.exe --help)",
+      "Bash(./chef-cli.exe mcp:*)",
+      "Bash(./chef-cli.exe initial-mapping:*)",
+      "Bash(powershell:*)",
+      "Bash(cp:*)",
+      "WebFetch(domain:docs.devrev.ai)"
+    ]
+  },
+  "disabledMcpjsonServers": [
+    "airdrop"
+  ],
+  "enabledMcpjsonServers": [
+    "airdrop"
+  ],
+  "enableAllProjectMcpServers": true
+}

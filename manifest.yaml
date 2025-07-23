@@ -1,0 +1,41 @@
+version: "2"
+
+name: Sentry
+description: An Airdrop snap-in for syncing data between Sentry and DevRev
+
+service_account:
+  display_name: Sentry Bot
+
+functions:
+  - name: extraction
+    description: Airdrop extraction function for Sentry
+  - name: loading
+    description: Airdrop loading function for Sentry
+
+keyring_types:
+  - id: sentry-auth-token
+    name: Sentry Connection
+    description: Connection to Sentry using an auth token
+    external_system_name: Sentry
+    kind: "Secret"
+    is_subdomain: true
+    secret_config:
+      secret_transform: ".token"
+      fields:
+        - id: token
+          name: Auth Token
+          description: Sentry authentication token with project:read and issue:read scopes
+      token_verification:
+        url: "https://[SUBDOMAIN].sentry.io/api/0/organizations/[SUBDOMAIN]/"
+        method: GET
+        headers:
+          Authorization: "Bearer [API_KEY]"
+
+imports:
+  - slug: airdrop-sentry-snap-in
+    display_name: Sentry
+    description: Import issues and events from Sentry
+    extractor_function: extraction
+    loader_function: loading
+    allowed_connection_types:
+      - sentry-auth-token

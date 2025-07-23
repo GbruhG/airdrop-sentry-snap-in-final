@@ -1,0 +1,127 @@
+{
+  "schema_version": "v0.2.0",
+  "record_types": {
+    "sentry_issues": {
+      "name": "Sentry Issues",
+      "is_loadable": true,
+      "fields": {
+        "id": {
+          "name": "Issue ID",
+          "is_required": true,
+          "type": "text",
+          "text": {
+            "min_length": 1
+          }
+        },
+        "title": {
+          "name": "Title",
+          "is_required": true,
+          "type": "text",
+          "text": {
+            "min_length": 1
+          }
+        },
+        "culprit": {
+          "name": "Error Location",
+          "type": "text"
+        },
+        "level": {
+          "name": "Severity Level",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "debug", "name": "Debug" },
+              { "key": "info", "name": "Info" },
+              { "key": "warning", "name": "Warning" },
+              { "key": "error", "name": "Error" },
+              { "key": "fatal", "name": "Fatal" }
+            ]
+          }
+        },
+        "status": {
+          "name": "Status",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "resolved", "name": "Resolved" },
+              { "key": "unresolved", "name": "Unresolved" },
+              { "key": "ignored", "name": "Ignored" }
+            ]
+          }
+        },
+        "count": {
+          "name": "Occurrence Count",
+          "type": "int"
+        },
+        "userCount": {
+          "name": "Affected Users",
+          "type": "int"
+        },
+        "firstSeen": {
+          "name": "First Seen",
+          "is_required": true,
+          "type": "timestamp"
+        },
+        "lastSeen": {
+          "name": "Last Seen",
+          "is_required": true,
+          "type": "timestamp"
+        },
+        "platform": {
+          "name": "Platform",
+          "type": "text"
+        },
+        "assignedTo": {
+          "name": "Assigned To",
+          "type": "reference",
+          "reference": {
+            "refers_to": {
+              "#record:sentry_users": {}
+            }
+          }
+        },
+        "item_url_field": {
+          "name": "Link to Sentry Issue",
+          "type": "text"
+        }
+      }
+    },
+    "sentry_users": {
+      "name": "Sentry Users",
+      "fields": {
+        "id": {
+          "name": "User ID",
+          "is_required": true,
+          "type": "text",
+          "text": {
+            "min_length": 1
+          }
+        },
+        "email": {
+          "name": "Email",
+          "is_required": true,
+          "type": "text",
+          "text": {
+            "min_length": 1
+          }
+        },
+        "name": {
+          "name": "Name",
+          "type": "text"
+        },
+        "role": {
+          "name": "Organization Role",
+          "type": "enum",
+          "enum": {
+            "values": [
+              { "key": "member", "name": "Member" },
+              { "key": "admin", "name": "Admin" },
+              { "key": "manager", "name": "Manager" },
+              { "key": "owner", "name": "Owner" }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
